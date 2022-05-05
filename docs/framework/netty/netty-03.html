@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>netty学习第三讲 | ryancoding</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/logo.jpg">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?3ab3d4cf25cd3fd346f82c4395a685c6";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();</script>
+    <meta name="description" content="继往圣之绝学，为万世开太平">
+    
+    <link rel="preload" href="/assets/css/0.styles.ab3565dd.css" as="style"><link rel="preload" href="/assets/js/app.382d496a.js" as="script"><link rel="preload" href="/assets/js/3.4ceb85be.js" as="script"><link rel="preload" href="/assets/js/1.4a1b6e1b.js" as="script"><link rel="preload" href="/assets/js/36.5ab026af.js" as="script"><link rel="prefetch" href="/assets/js/10.f74699a1.js"><link rel="prefetch" href="/assets/js/11.44ef4f8a.js"><link rel="prefetch" href="/assets/js/12.01fb5744.js"><link rel="prefetch" href="/assets/js/13.599f6661.js"><link rel="prefetch" href="/assets/js/14.15d1a26f.js"><link rel="prefetch" href="/assets/js/15.88bef446.js"><link rel="prefetch" href="/assets/js/16.55251db9.js"><link rel="prefetch" href="/assets/js/17.53b6dfa3.js"><link rel="prefetch" href="/assets/js/18.0fa49d55.js"><link rel="prefetch" href="/assets/js/19.768bb9a2.js"><link rel="prefetch" href="/assets/js/20.7564a134.js"><link rel="prefetch" href="/assets/js/21.c0ac2e8f.js"><link rel="prefetch" href="/assets/js/22.e691f583.js"><link rel="prefetch" href="/assets/js/23.2ea051f4.js"><link rel="prefetch" href="/assets/js/24.62aacb1e.js"><link rel="prefetch" href="/assets/js/25.c9048b9b.js"><link rel="prefetch" href="/assets/js/26.b57eedcb.js"><link rel="prefetch" href="/assets/js/27.902b8021.js"><link rel="prefetch" href="/assets/js/28.98554db2.js"><link rel="prefetch" href="/assets/js/29.949dd573.js"><link rel="prefetch" href="/assets/js/30.f63b5e13.js"><link rel="prefetch" href="/assets/js/31.75b4f7c2.js"><link rel="prefetch" href="/assets/js/32.a5680a35.js"><link rel="prefetch" href="/assets/js/33.682ef1db.js"><link rel="prefetch" href="/assets/js/34.d588901c.js"><link rel="prefetch" href="/assets/js/35.58f1c69e.js"><link rel="prefetch" href="/assets/js/37.f31eb4d3.js"><link rel="prefetch" href="/assets/js/38.46bedb47.js"><link rel="prefetch" href="/assets/js/39.0b5d866d.js"><link rel="prefetch" href="/assets/js/4.4c0dee78.js"><link rel="prefetch" href="/assets/js/40.6e3de038.js"><link rel="prefetch" href="/assets/js/41.7026ba06.js"><link rel="prefetch" href="/assets/js/42.19b1f2b2.js"><link rel="prefetch" href="/assets/js/43.0e4df799.js"><link rel="prefetch" href="/assets/js/44.b4e74a5d.js"><link rel="prefetch" href="/assets/js/45.d396f7c2.js"><link rel="prefetch" href="/assets/js/46.2efbb468.js"><link rel="prefetch" href="/assets/js/47.1a9a22bd.js"><link rel="prefetch" href="/assets/js/48.222227c9.js"><link rel="prefetch" href="/assets/js/49.3a76f93c.js"><link rel="prefetch" href="/assets/js/5.f5368982.js"><link rel="prefetch" href="/assets/js/50.15c300f8.js"><link rel="prefetch" href="/assets/js/6.dd595d68.js"><link rel="prefetch" href="/assets/js/7.be128ee7.js"><link rel="prefetch" href="/assets/js/8.1a3db4f4.js"><link rel="prefetch" href="/assets/js/9.e9388b6c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ab3565dd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>ryancoding</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>继往圣之绝学，为万世开太平</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>Ryan</span>
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.jpg" alt="ryancoding" class="logo"> <span class="site-name">ryancoding</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/C语言/" class="nav-link"><i class="undefined"></i>
+  C语言
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/netty/" class="nav-link"><i class="undefined"></i>
+  netty
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/数据结构/" class="nav-link"><i class="undefined"></i>
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/categories/tcp协议/" class="nav-link"><i class="undefined"></i>
+  tcp协议
+</a></li><li class="dropdown-item"><!----> <a href="/categories/力扣/" class="nav-link"><i class="undefined"></i>
+  力扣
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RDP/" class="nav-link"><i class="undefined"></i>
+  RDP
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/avatar.png" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    Ryan
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>40</h3> <h6 data-v-39576ba9>Articles</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>7</h3> <h6 data-v-39576ba9>Tags</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/C语言/" class="nav-link"><i class="undefined"></i>
+  C语言
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/netty/" class="nav-link"><i class="undefined"></i>
+  netty
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/数据结构/" class="nav-link"><i class="undefined"></i>
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/categories/tcp协议/" class="nav-link"><i class="undefined"></i>
+  tcp协议
+</a></li><li class="dropdown-item"><!----> <a href="/categories/力扣/" class="nav-link"><i class="undefined"></i>
+  力扣
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RDP/" class="nav-link"><i class="undefined"></i>
+  RDP
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  关于我
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>netty学习第三讲</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>Ryan</span>
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">netty学习第三讲</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>Ryan</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>1/20/2022</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><div class="custom-block tip"><p class="title"></p><p>Netty 支持哪些常用的解码器？</p></div> <p></p><div class="table-of-contents"><ul><li><a href="#固定长度解码器-fixedlengthframedecoder">固定长度解码器 FixedLengthFrameDecoder</a></li><li><a href="#特殊分隔符解码器-delimiterbasedframedecoder">特殊分隔符解码器 DelimiterBasedFrameDecoder</a></li><li><a href="#长度域解码器-lengthfieldbasedframedecoder">长度域解码器 LengthFieldBasedFrameDecoder</a></li><li><a href="#总结">总结</a></li></ul></div><p></p> <div class="custom-block warning"><p class="title"></p><p>​		在前两节课我们介绍了 TCP 拆包/粘包的问题，以及如何使用 Netty 实现自定义协议的编解码。可以看到，网络通信的底层实现，Netty 都已经帮我们封装好了，我们只需要扩展 ChannelHandler 实现自定义的编解码逻辑即可。更加人性化的是，Netty 提供了很多开箱即用的解码器，这些解码器基本覆盖了 TCP 拆包/粘包的通用解决方案。本节课我们将对 Netty 常用的解码器进行讲解，一起探索下它们有哪些用法和技巧。</p> <p>在本节课开始之前，我们首先回顾一下 TCP 拆包/粘包的主流解决方案。并梳理出 Netty 对应的编码器类。</p></div><h3 id="固定长度解码器-fixedlengthframedecoder"><a href="#固定长度解码器-fixedlengthframedecoder" class="header-anchor">#</a> 固定长度解码器 FixedLengthFrameDecoder</h3> <p>固定长度解码器 FixedLengthFrameDecoder 非常简单，直接通过构造函数设置固定长度的大小 frameLength，无论接收方一次获取多大的数据，都会严格按照 frameLength 进行解码。如果累积读取到长度大小为 frameLength 的消息，那么解码器认为已经获取到了一个完整的消息。如果消息长度小于 frameLength，FixedLengthFrameDecoder 解码器会一直等后续数据包的到达，直至获得完整的消息。下面我们通过一个例子感受一下使用 Netty 实现固定长度解码是多么简单。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class EchoServer {
+
+    public void startEchoServer(int port) throws Exception {
+
+        EventLoopGroup bossGroup = new NioEventLoopGroup();
+
+        EventLoopGroup workerGroup = new NioEventLoopGroup();
+
+        try {
+
+            ServerBootstrap b = new ServerBootstrap();
+
+            b.group(bossGroup, workerGroup)
+
+                    .channel(NioServerSocketChannel.class)
+
+                    .childHandler(new ChannelInitializer&lt;SocketChannel&gt;() {
+
+                        @Override
+
+                        public void initChannel(SocketChannel ch) {
+
+                            ch.pipeline().addLast(new FixedLengthFrameDecoder(10));
+
+                            ch.pipeline().addLast(new EchoServerHandler());
+
+                        }
+
+                    });
+
+            ChannelFuture f = b.bind(port).sync();
+
+            f.channel().closeFuture().sync();
+
+        } finally {
+
+            bossGroup.shutdownGracefully();
+
+            workerGroup.shutdownGracefully();
+
+        }
+
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        new EchoServer().startEchoServer(8088);
+
+    }
+
+}
+
+@Sharable
+
+public class EchoServerHandler extends ChannelInboundHandlerAdapter {
+
+    @Override
+
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+
+        System.out.println(&quot;Receive client : [&quot; + ((ByteBuf) msg).toString(CharsetUtil.UTF_8) + &quot;]&quot;);
+
+    }
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br></div></div><p>在上述服务端的代码中使用了固定 10 字节的解码器，并在解码之后通过 EchoServerHandler 打印结果。我们可以启动服务端，通过 telnet 命令像服务端发送数据，观察代码输出的结果。</p> <p>客户端输入：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>telnet localhost 8088
+
+Trying ::1...
+
+Connected to localhost.
+
+Escape character is '^]'.
+
+1234567890123
+
+456789012
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>服务端输出：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Receive client : [1234567890]
+
+Receive client : [123
+
+45678]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="特殊分隔符解码器-delimiterbasedframedecoder"><a href="#特殊分隔符解码器-delimiterbasedframedecoder" class="header-anchor">#</a> 特殊分隔符解码器 DelimiterBasedFrameDecoder</h3> <p>使用特殊分隔符解码器 DelimiterBasedFrameDecoder 之前我们需要了解以下几个属性的作用。</p> <ul><li><strong>delimiters</strong></li></ul> <p>delimiters 指定特殊分隔符，通过写入 ByteBuf 作为<strong>参数</strong>传入。delimiters 的类型是 ByteBuf 数组，所以我们可以同时指定多个分隔符，但是最终会选择长度最短的分隔符进行消息拆分。</p> <p>例如接收方收到的数据为：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>+--------------+
+
+| ABC\nDEF\r\n |
+
++--------------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>如果指定的多个分隔符为 \n 和 \r\n，DelimiterBasedFrameDecoder 会退化成使用 LineBasedFrameDecoder 进行解析，那么会解码出两个消息。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>+-----+-----+
+
+| ABC | DEF |
+
++-----+-----+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>如果指定的特定分隔符只有 \r\n，那么只会解码出一个消息：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>+----------+
+
+| ABC\nDEF |
+
++----------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li><strong>maxLength</strong></li></ul> <p>maxLength 是报文最大长度的限制。如果超过 maxLength 还没有检测到指定分隔符，将会抛出 TooLongFrameException。可以说 maxLength 是对程序在极端情况下的一种<strong>保护措施</strong>。</p> <ul><li><strong>failFast</strong></li></ul> <p>failFast 与 maxLength 需要搭配使用，通过设置 failFast 可以控制抛出 TooLongFrameException 的时机，可以说 Netty 在细节上考虑得面面俱到。如果 failFast=true，那么在超出 maxLength 会立即抛出 TooLongFrameException，不再继续进行解码。如果 failFast=false，那么会等到解码出一个完整的消息后才会抛出 TooLongFrameException。</p> <ul><li><strong>stripDelimiter</strong></li></ul> <p>stripDelimiter 的作用是判断解码后得到的消息是否去除分隔符。如果 stripDelimiter=false，特定分隔符为 \n，那么上述数据包解码出的结果为：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>+-------+---------+
+
+| ABC\n | DEF\r\n |
+
++-------+---------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>下面我们还是结合代码示例学习 DelimiterBasedFrameDecoder 的用法，依然以固定编码器小节中使用的代码为基础稍做改动，引入特殊分隔符解码器 DelimiterBasedFrameDecoder：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>b.group(bossGroup, workerGroup)
+
+    .channel(NioServerSocketChannel.class)
+
+    .childHandler(new ChannelInitializer&lt;SocketChannel&gt;() {
+
+        @Override
+
+        public void initChannel(SocketChannel ch) {
+
+            ByteBuf delimiter = Unpooled.copiedBuffer(&quot;&amp;&quot;.getBytes());
+
+            ch.pipeline().addLast(new DelimiterBasedFrameDecoder(10, true, true, delimiter));
+
+            ch.pipeline().addLast(new EchoServerHandler());
+
+        }
+
+    });
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>我们依然通过 telnet 模拟客户端发送数据，观察代码输出的结果，可以发现由于 maxLength 设置的只有 10，所以在解析到第三个消息时抛出异常。</p> <p>客户端输入：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>telnet localhost 8088
+
+Trying ::1...
+
+Connected to localhost.
+
+Escape character is '^]'.
+
+hello&amp;world&amp;1234567890ab
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>服务端输出：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Receive client : [hello]
+
+Receive client : [world]
+
+九月 25, 2020 8:46:01 下午 io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+
+警告: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+
+io.netty.handler.codec.TooLongFrameException: frame length exceeds 10: 13 - discarded
+
+	at io.netty.handler.codec.DelimiterBasedFrameDecoder.fail(DelimiterBasedFrameDecoder.java:302)
+
+	at io.netty.handler.codec.DelimiterBasedFrameDecoder.decode(DelimiterBasedFrameDecoder.java:268)
+
+	at io.netty.handler.codec.DelimiterBasedFrameDecoder.decode(DelimiterBasedFrameDecoder.java:218)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h3 id="长度域解码器-lengthfieldbasedframedecoder"><a href="#长度域解码器-lengthfieldbasedframedecoder" class="header-anchor">#</a> 长度域解码器 LengthFieldBasedFrameDecoder</h3> <p>长度域解码器 LengthFieldBasedFrameDecoder 是解决 TCP 拆包/粘包问题最常用的**解码器。**它基本上可以覆盖大部分基于长度拆包场景，开源消息中间件 RocketMQ 就是使用 LengthFieldBasedFrameDecoder 进行解码的。LengthFieldBasedFrameDecoder 相比 FixedLengthFrameDecoder 和 DelimiterBasedFrameDecoder 要复杂一些，接下来我们就一起学习下这个强大的解码器。</p> <p>首先我们同样先了解 LengthFieldBasedFrameDecoder 中的几个重要属性，这里我主要把它们分为两个部分：<strong>长度域解码器特有属性</strong>以及<strong>与其他解码器（如特定分隔符解码器）的相似的属性</strong>。</p> <ul><li><strong>长度域解码器特有属性。</strong></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 长度字段的偏移量，也就是存放长度数据的起始位置
+
+private final int lengthFieldOffset; 
+
+// 长度字段所占用的字节数
+
+private final int lengthFieldLength; 
+
+/*
+
+ * 消息长度的修正值
+
+ *
+
+ * 在很多较为复杂一些的协议设计中，长度域不仅仅包含消息的长度，而且包含其他的数据，如版本号、数据类型、数据状态等，那么这时候我们需要使用 lengthAdjustment 进行修正
+
+ * 
+
+ * lengthAdjustment = 包体的长度值 - 长度域的值
+
+ *
+
+ */
+
+private final int lengthAdjustment; 
+
+// 解码后需要跳过的初始字节数，也就是消息内容字段的起始位置
+
+private final int initialBytesToStrip;
+
+// 长度字段结束的偏移量，lengthFieldEndOffset = lengthFieldOffset + lengthFieldLength
+
+private final int lengthFieldEndOffset;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><ul><li><strong>与固定长度解码器和特定分隔符解码器相似的属性。</strong></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>private final int maxFrameLength; // 报文最大限制长度
+
+private final boolean failFast; // 是否立即抛出 TooLongFrameException，与 maxFrameLength 搭配使用
+
+private boolean discardingTooLongFrame; // 是否处于丢弃模式
+
+private long tooLongFrameLength; // 需要丢弃的字节数
+
+private long bytesToDiscard; // 累计丢弃的字节数
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>下面我们结合具体的示例来解释下每种参数的组合，其实在 Netty LengthFieldBasedFrameDecoder 源码的注释中已经描述得非常详细，一共给出了 7 个场景示例，理解了这些示例基本上可以真正掌握 LengthFieldBasedFrameDecoder 的参数用法。</p> <p><strong>示例 1：典型的基于消息长度 + 消息内容的解码。</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>BEFORE DECODE (14 bytes)         AFTER DECODE (14 bytes)
+
++--------+----------------+      +--------+----------------+
+
+| Length | Actual Content |-----&gt;| Length | Actual Content |
+
+| 0x000C | &quot;HELLO, WORLD&quot; |      | 0x000C | &quot;HELLO, WORLD&quot; |
+
++--------+----------------+      +--------+----------------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>上述协议是最基本的格式，报文只包含消息长度 Length 和消息内容 Content 字段，其中 Length 为 16 进制表示，共占用 2 字节，Length 的值 0x000C 代表 Content 占用 12 字节。该协议对应的解码器参数组合如下：</p> <ul><li>lengthFieldOffset = 0，因为 Length 字段就在报文的开始位置。</li> <li>lengthFieldLength = 2，协议设计的固定长度。</li> <li>lengthAdjustment = 0，Length 字段只包含消息长度，不需要做任何修正。</li> <li>initialBytesToStrip = 0，解码后内容依然是 Length + Content，不需要跳过任何初始字节。</li></ul> <p><strong>示例 2：解码结果需要截断。</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>BEFORE DECODE (14 bytes)         AFTER DECODE (12 bytes)
+
++--------+----------------+      +----------------+
+
+| Length | Actual Content |-----&gt;| Actual Content |
+
+| 0x000C | &quot;HELLO, WORLD&quot; |      | &quot;HELLO, WORLD&quot; |
+
++--------+----------------+      +----------------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>示例 2 和示例 1 的区别在于解码后的结果只包含消息内容，其他的部分是不变的。该协议对应的解码器参数组合如下：</p> <ul><li>lengthFieldOffset = 0，因为 Length 字段就在报文的开始位置。</li> <li>lengthFieldLength = 2，协议设计的固定长度。</li> <li>lengthAdjustment = 0，Length 字段只包含消息长度，不需要做任何修正。</li> <li>initialBytesToStrip = 2，跳过 Length 字段的字节长度，解码后 ByteBuf 中只包含 Content字段。</li></ul> <p><strong>示例 3：长度字段包含消息长度和消息内容所占的字节。</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>BEFORE DECODE (14 bytes)         AFTER DECODE (14 bytes)
+
++--------+----------------+      +--------+----------------+
+
+| Length | Actual Content |-----&gt;| Length | Actual Content |
+
+| 0x000E | &quot;HELLO, WORLD&quot; |      | 0x000E | &quot;HELLO, WORLD&quot; |
+
++--------+----------------+      +--------+----------------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>与前两个示例不同的是，示例 3 的 Length 字段包含 Length 字段自身的固定长度以及 Content 字段所占用的字节数，Length 的值为 0x000E（2 + 12 = 14 字节），在 Length 字段值（14 字节）的基础上做 lengthAdjustment（-2）的修正，才能得到真实的 Content 字段长度，所以对应的解码器参数组合如下：</p> <ul><li>lengthFieldOffset = 0，因为 Length 字段就在报文的开始位置。</li> <li>lengthFieldLength = 2，协议设计的固定长度。</li> <li>lengthAdjustment = -2，长度字段为 14 字节，需要减 2 才是拆包所需要的长度。</li> <li>initialBytesToStrip = 0，解码后内容依然是 Length + Content，不需要跳过任何初始字节。</li></ul> <p><strong>示例 4：基于长度字段偏移的解码。</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>BEFORE DECODE (17 bytes)                      AFTER DECODE (17 bytes)
+
++----------+----------+----------------+      +----------+----------+----------------+
+
+| Header 1 |  Length  | Actual Content |-----&gt;| Header 1 |  Length  | Actual Content |
+
+|  0xCAFE  | 0x00000C | &quot;HELLO, WORLD&quot; |      |  0xCAFE  | 0x00000C | &quot;HELLO, WORLD&quot; |
+
++----------+----------+----------------+      +----------+----------+----------------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>示例 4 中 Length 字段不再是报文的起始位置，Length 字段的值为 0x00000C，表示 Content 字段占用 12 字节，该协议对应的解码器参数组合如下：</p> <ul><li>lengthFieldOffset = 2，需要跳过 Header 1 所占用的 2 字节，才是 Length 的起始位置。</li> <li>lengthFieldLength = 3，协议设计的固定长度。</li> <li>lengthAdjustment = 0，Length 字段只包含消息长度，不需要做任何修正。</li> <li>initialBytesToStrip = 0，解码后内容依然是完整的报文，不需要跳过任何初始字节。</li></ul> <p><strong>示例 5：长度字段与内容字段不再相邻。</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>BEFORE DECODE (17 bytes)                      AFTER DECODE (17 bytes)
+
++----------+----------+----------------+      +----------+----------+----------------+
+
+|  Length  | Header 1 | Actual Content |-----&gt;|  Length  | Header 1 | Actual Content |
+
+| 0x00000C |  0xCAFE  | &quot;HELLO, WORLD&quot; |      | 0x00000C |  0xCAFE  | &quot;HELLO, WORLD&quot; |
+
++----------+----------+----------------+      +----------+----------+----------------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>示例 5 中的 Length 字段之后是 Header 1，Length 与 Content 字段不再相邻。Length 字段所表示的内容略过了 Header 1 字段，所以也需要通过 lengthAdjustment 修正才能得到 Header + Content 的内容。示例 5 所对应的解码器参数组合如下：</p> <ul><li>lengthFieldOffset = 0，因为 Length 字段就在报文的开始位置。</li> <li>lengthFieldLength = 3，协议设计的固定长度。</li> <li>lengthAdjustment = 2，由于 Header + Content 一共占用 2 + 12 = 14 字节，所以 Length 字段值（12 字节）加上 lengthAdjustment（2 字节）才能得到 Header + Content 的内容（14 字节）。</li> <li>initialBytesToStrip = 0，解码后内容依然是完整的报文，不需要跳过任何初始字节。</li></ul> <p><strong>示例 6：基于长度偏移和长度修正的解码。</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>BEFORE DECODE (16 bytes)                       AFTER DECODE (13 bytes)
+
++------+--------+------+----------------+      +------+----------------+
+
+| HDR1 | Length | HDR2 | Actual Content |-----&gt;| HDR2 | Actual Content |
+
+| 0xCA | 0x000C | 0xFE | &quot;HELLO, WORLD&quot; |      | 0xFE | &quot;HELLO, WORLD&quot; |
+
++------+--------+------+----------------+      +------+----------------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>示例 6 中 Length 字段前后分为别 HDR1 和 HDR2 字段，各占用 1 字节，所以既需要做长度字段的偏移，也需要做 lengthAdjustment 修正，具体修正的过程与 示例 5 类似。对应的解码器参数组合如下：</p> <ul><li>lengthFieldOffset = 1，需要跳过 HDR1 所占用的 1 字节，才是 Length 的起始位置。</li> <li>lengthFieldLength = 2，协议设计的固定长度。</li> <li>lengthAdjustment = 1，由于 HDR2 + Content 一共占用 1 + 12 = 13 字节，所以 Length 字段值（12 字节）加上 lengthAdjustment（1）才能得到 HDR2 + Content 的内容（13 字节）。</li> <li>initialBytesToStrip = 3，解码后跳过 HDR1 和 Length 字段，共占用 3 字节。</li></ul> <p><strong>示例 7：长度字段包含除 Content 外的多个其他字段。</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>BEFORE DECODE (16 bytes)                       AFTER DECODE (13 bytes)
+
++------+--------+------+----------------+      +------+----------------+
+
+| HDR1 | Length | HDR2 | Actual Content |-----&gt;| HDR2 | Actual Content |
+
+| 0xCA | 0x0010 | 0xFE | &quot;HELLO, WORLD&quot; |      | 0xFE | &quot;HELLO, WORLD&quot; |
+
++------+--------+------+----------------+      +------+----------------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>示例 7 与 示例 6 的区别在于 Length 字段记录了整个报文的长度，包含 Length 自身所占字节、HDR1 、HDR2 以及 Content 字段的长度，解码器需要知道如何进行 lengthAdjustment 调整，才能得到 HDR2 和 Content 的内容。所以我们可以采用如下的解码器参数组合：</p> <ul><li>lengthFieldOffset = 1，需要跳过 HDR1 所占用的 1 字节，才是 Length 的起始位置。</li> <li>lengthFieldLength = 2，协议设计的固定长度。</li> <li>lengthAdjustment = -3，Length 字段值（16 字节）需要减去 HDR1（1 字节） 和 Length 自身所占字节长度（2 字节）才能得到 HDR2 和 Content 的内容（1 + 12 = 13 字节）。</li> <li>initialBytesToStrip = 3，解码后跳过 HDR1 和 Length 字段，共占用 3 字节。</li></ul> <p>以上 7 种示例涵盖了 LengthFieldBasedFrameDecoder 大部分的使用场景，你是否学会了呢？最后留一个小任务，在上一节课程中我们设计了一个较为通用的协议，如下所示。如何使用长度域解码器 LengthFieldBasedFrameDecoder 完成该协议的解码呢？抓紧自己尝试下吧。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>+---------------------------------------------------------------+
+
+| 魔数 2byte | 协议版本号 1byte | 序列化算法 1byte | 报文类型 1byte  |
+
++---------------------------------------------------------------+
+
+| 状态 1byte |        保留字段 4byte     |      数据长度 4byte     | 
+
++---------------------------------------------------------------+
+
+|                   数据内容 （长度不定）                          |
+
++---------------------------------------------------------------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h3> <p>本节课我们介绍了三种常用的解码器，从中我们可以体会到 Netty 在设计上的优雅，只需要调整参数就可以轻松实现各种功能。在健壮性上，Netty 也考虑得非常全面，很多边界情况 Netty 都贴心地增加了保护性措施。实现一个健壮的解码器并不容易，很可能因为一次解析错误就会导致解码器一直处理错乱的状态。如果你使用了基于长度编码的二进制协议，那么推荐你使用 LengthFieldBasedFrameDecoder，它已经可以满足实际项目中的大部分场景，基本不需要再自定义实现了。希望朋友们在项目开发中能够学以致用。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-3" data-v-cb1513f6><a href="/docs/framework/netty/netty-03.html#固定长度解码器-fixedlengthframedecoder" class="sidebar-link reco-side-固定长度解码器-fixedlengthframedecoder" data-v-cb1513f6>固定长度解码器 FixedLengthFrameDecoder</a></li><li class="level-3" data-v-cb1513f6><a href="/docs/framework/netty/netty-03.html#特殊分隔符解码器-delimiterbasedframedecoder" class="sidebar-link reco-side-特殊分隔符解码器-delimiterbasedframedecoder" data-v-cb1513f6>特殊分隔符解码器 DelimiterBasedFrameDecoder</a></li><li class="level-3" data-v-cb1513f6><a href="/docs/framework/netty/netty-03.html#长度域解码器-lengthfieldbasedframedecoder" class="sidebar-link reco-side-长度域解码器-lengthfieldbasedframedecoder" data-v-cb1513f6>长度域解码器 LengthFieldBasedFrameDecoder</a></li><li class="level-3" data-v-cb1513f6><a href="/docs/framework/netty/netty-03.html#总结" class="sidebar-link reco-side-总结" data-v-cb1513f6>总结</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="https://music.163.com/song/media/outer/url?id=1846489646.mp3" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:200px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="https://p1.music.126.net/LoVqPgkI7DwSNZk50gcODg==/109951165994863998.jpg?param=130y130" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(https://p1.music.126.net/LoVqPgkI7DwSNZk50gcODg==/109951165994863998.jpg?param=130y130);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>嘉宾</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>路文飞</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div></div></div>
+    <script src="/assets/js/app.382d496a.js" defer></script><script src="/assets/js/3.4ceb85be.js" defer></script><script src="/assets/js/1.4a1b6e1b.js" defer></script><script src="/assets/js/36.5ab026af.js" defer></script>
+  </body>
+</html>
