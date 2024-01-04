@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vscode中配置基于cmake的clangd开发环境 | ryancoding</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/logo.jpg">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?3ab3d4cf25cd3fd346f82c4395a685c6";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();</script>
+    <meta name="description" content="继往圣之绝学，为万世开太平">
+    
+    <link rel="preload" href="/assets/css/0.styles.a035a541.css" as="style"><link rel="preload" href="/assets/js/app.c3a3c59f.js" as="script"><link rel="preload" href="/assets/js/3.fffc709b.js" as="script"><link rel="preload" href="/assets/js/1.b1aed609.js" as="script"><link rel="preload" href="/assets/js/16.300f3fcd.js" as="script"><link rel="prefetch" href="/assets/js/10.1dd51d14.js"><link rel="prefetch" href="/assets/js/11.d70db5b4.js"><link rel="prefetch" href="/assets/js/12.d4164505.js"><link rel="prefetch" href="/assets/js/13.192ef96b.js"><link rel="prefetch" href="/assets/js/14.282ffb3c.js"><link rel="prefetch" href="/assets/js/15.9e5ad7c8.js"><link rel="prefetch" href="/assets/js/17.9e91194c.js"><link rel="prefetch" href="/assets/js/18.4ccbadb1.js"><link rel="prefetch" href="/assets/js/19.bfd45861.js"><link rel="prefetch" href="/assets/js/20.ced223c7.js"><link rel="prefetch" href="/assets/js/21.d65b9f87.js"><link rel="prefetch" href="/assets/js/22.9902d513.js"><link rel="prefetch" href="/assets/js/23.6e2fba95.js"><link rel="prefetch" href="/assets/js/24.28b91084.js"><link rel="prefetch" href="/assets/js/4.b8b133d8.js"><link rel="prefetch" href="/assets/js/5.35a9b107.js"><link rel="prefetch" href="/assets/js/6.47f738ff.js"><link rel="prefetch" href="/assets/js/7.5aa4e347.js"><link rel="prefetch" href="/assets/js/8.2a018639.js"><link rel="prefetch" href="/assets/js/9.39c5b16f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a035a541.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>ryancoding</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>继往圣之绝学，为万世开太平</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>Ryan</span>
+            
+          <span data-v-25ba6db2>2022 - </span>
+          2024
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.jpg" alt="ryancoding" class="logo"> <span class="site-name">ryancoding</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/算法/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/categories/ebpf/" class="nav-link"><i class="undefined"></i>
+  ebpf
+</a></li><li class="dropdown-item"><!----> <a href="/categories/perf/" class="nav-link"><i class="undefined"></i>
+  perf
+</a></li><li class="dropdown-item"><!----> <a href="/categories/wireguard/" class="nav-link"><i class="undefined"></i>
+  wireguard
+</a></li><li class="dropdown-item"><!----> <a href="/categories/clangd/" class="nav-link"><i class="undefined"></i>
+  clangd
+</a></li><li class="dropdown-item"><!----> <a href="/categories/linux/" class="nav-link"><i class="undefined"></i>
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/流量监控/" class="nav-link"><i class="undefined"></i>
+  流量监控
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IP路由/" class="nav-link"><i class="undefined"></i>
+  IP路由
+</a></li><li class="dropdown-item"><!----> <a href="/categories/vpn/" class="nav-link"><i class="undefined"></i>
+  vpn
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Sectran/" class="nav-link"><i class="undefined"></i>
+  Sectran
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RDP/" class="nav-link"><i class="undefined"></i>
+  RDP
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/avatar.png" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    Ryan
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>14</h3> <h6 data-v-39576ba9>Articles</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>Tags</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/算法/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/categories/ebpf/" class="nav-link"><i class="undefined"></i>
+  ebpf
+</a></li><li class="dropdown-item"><!----> <a href="/categories/perf/" class="nav-link"><i class="undefined"></i>
+  perf
+</a></li><li class="dropdown-item"><!----> <a href="/categories/wireguard/" class="nav-link"><i class="undefined"></i>
+  wireguard
+</a></li><li class="dropdown-item"><!----> <a href="/categories/clangd/" class="nav-link"><i class="undefined"></i>
+  clangd
+</a></li><li class="dropdown-item"><!----> <a href="/categories/linux/" class="nav-link"><i class="undefined"></i>
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/流量监控/" class="nav-link"><i class="undefined"></i>
+  流量监控
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IP路由/" class="nav-link"><i class="undefined"></i>
+  IP路由
+</a></li><li class="dropdown-item"><!----> <a href="/categories/vpn/" class="nav-link"><i class="undefined"></i>
+  vpn
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Sectran/" class="nav-link"><i class="undefined"></i>
+  Sectran
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RDP/" class="nav-link"><i class="undefined"></i>
+  RDP
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  关于我
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>vscode中配置基于cmake的clangd开发环境</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>Ryan</span>
+            
+          <span data-v-25ba6db2>2022 - </span>
+          2024
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">vscode中配置基于cmake的clangd开发环境</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>Ryan</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>7/8/2023</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><p></p><div class="table-of-contents"><ul><li><a href="#clangd-cmake">Clangd-Cmake</a></li><li><a href="#clangd能解决所有场景吗">Clangd能解决所有场景吗？</a></li><li><a href="#clang-format">Clang-format</a></li><li><a href="#指定c-c-编译器版本">指定C/C++编译器版本</a></li></ul></div><p></p> <div class="custom-block tip"><p class="title"></p><p>vscode自带的C/C++工具实在是有些不友好，经常开发的时候找不到头文件，导致代码跳转和补全功能都有问题，于是乎决定抛弃Microsoft C/C++转向Clangd，配合clang-format来格式化代码。两者都是基于LLVM开发的插件，接下来让我看如何配置吧。</p></div><p>至于如何安装这些插件这里就不多做赘述，相信使用过vscode的同学都已经熟悉了，接下来我们第一步首先来写cmake文件来开启clangd的功能</p> <h3 id="clangd-cmake"><a href="#clangd-cmake" class="header-anchor">#</a> Clangd-Cmake</h3> <p>使用cmake来生成clangd需要的文件<code>compile-command.json</code>是很方便的，在最新的cmake版本中，我们可以直接打开一个配置项就ok了</p> <div class="language-cmake line-numbers-mode"><pre class="language-cmake"><code><span class="token keyword">cmake_minimum_required</span><span class="token punctuation">(</span><span class="token property">VERSION</span> <span class="token number">3.16</span><span class="token punctuation">)</span>
+
+<span class="token keyword">project</span><span class="token punctuation">(</span>unix-learning<span class="token punctuation">)</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">EXECUTABLE_OUTPUT_PATH</span> <span class="token punctuation">${</span><span class="token variable">CMAKE_SOURCE_DIR</span><span class="token punctuation">}</span>/bin<span class="token punctuation">)</span>
+<span class="token comment">#配置导出生成clangd需要编译命令的文件</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_EXPORT_COMPILE_COMMANDS</span> <span class="token boolean">ON</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>这个文件是这样子的</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">&quot;directory&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/opt/unix-learn/build&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;command&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/usr/bin/gcc  -I/usr/src/linux-headers-5.4.0-144/include -I/opt/unix-learn -g -o CMakeFiles/container_of.dir/container_of.c.o -c /opt/unix-learn/container_of.c&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;file&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/opt/unix-learn/container_of.c&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  ......
+ <span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>其中cmke配置的头文件路径会在command属性中看到，也就是<code>-I/usr/src/linux-headers-5.4.0-144/include -I/opt/unix-learn</code>这样当我们打开<code>container_of.c</code>这个文件的时候，就能直接点击进所有的头文件啦！</p> <h3 id="clangd能解决所有场景吗"><a href="#clangd能解决所有场景吗" class="header-anchor">#</a> Clangd能解决所有场景吗？</h3> <p>**但是这样真的可以解决我们所有C语言开发的场景吗？**其实不然，比如作者想在这个项目模块底下来写一些内核驱动程序，我们知道cmake来编译内核程序其实是很不方便的，但是整个项目却又要使用cmake来管理。我们可以来看一下如果我们使用cmake来编译内核程序，一般会如何写。</p> <div class="language-cmake line-numbers-mode"><pre class="language-cmake"><code><span class="token keyword">set</span><span class="token punctuation">(</span>MODULE_NAME kexamples<span class="token punctuation">)</span>
+
+<span class="token keyword">add_definitions</span><span class="token punctuation">(</span>-D__KERNEL__ -DMODULE<span class="token punctuation">)</span>
+
+<span class="token keyword">set</span><span class="token punctuation">(</span>KSOURCE_FILES
+    kernels.c
+    rtnl.c
+    genl.c
+<span class="token punctuation">)</span>
+
+<span class="token keyword">find_path</span><span class="token punctuation">(</span>
+        KERNEL_HEADERS_DIR
+        include/linux/user.h
+        PATHS /usr/src/kernels/<span class="token punctuation">${</span>KERNEL_RELEASE<span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span><span class="token punctuation">(</span>KERNEL_HEADERS_DIR<span class="token punctuation">)</span>
+    <span class="token keyword">message</span><span class="token punctuation">(</span>STATUS <span class="token string">&quot;kernel header dir <span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">KERNEL_HEADERS_DIR</span><span class="token punctuation">}</span></span>/include&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">include_directories</span><span class="token punctuation">(</span><span class="token punctuation">${</span>KERNEL_HEADERS_DIR<span class="token punctuation">}</span>/include<span class="token punctuation">)</span>
+<span class="token keyword">endif</span><span class="token punctuation">(</span>KERNEL_HEADERS_DIR<span class="token punctuation">)</span>
+
+
+<span class="token comment">#生成Kbuild文件</span>
+<span class="token keyword">get_filename_component</span><span class="token punctuation">(</span>KO_FILENAME_WE <span class="token punctuation">${</span>MODULE_NAME<span class="token punctuation">}</span> NAME_WE<span class="token punctuation">)</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span>KBUILD_CONTEXT <span class="token string">&quot;obj-m := <span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">KO_FILENAME_WE</span><span class="token punctuation">}</span></span>.o\n<span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">KO_FILENAME_WE</span><span class="token punctuation">}</span></span>-objs = &quot;</span><span class="token punctuation">)</span>
+
+<span class="token keyword">foreach</span><span class="token punctuation">(</span>SOURCE_FILE <span class="token punctuation">${</span>KSOURCE_FILES<span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">string</span><span class="token punctuation">(</span>FIND <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">FILE_CONTENT</span><span class="token punctuation">}</span></span>&quot;</span> <span class="token string">&quot;module_init(&quot;</span> KERNEL_INIT_INDEX<span class="token punctuation">)</span>
+    <span class="token keyword">get_filename_component</span><span class="token punctuation">(</span>FILENAME_WE <span class="token punctuation">${</span>SOURCE_FILE<span class="token punctuation">}</span> NAME_WE<span class="token punctuation">)</span>
+    <span class="token keyword">set</span><span class="token punctuation">(</span>KBUILD_CONTEXT <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">KBUILD_CONTEXT</span><span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">FILENAME_WE</span><span class="token punctuation">}</span></span>.o &quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">endforeach</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">FILE</span><span class="token punctuation">(</span>WRITE <span class="token punctuation">${</span><span class="token variable">CMAKE_CURRENT_SOURCE_DIR</span><span class="token punctuation">}</span>/Kbuild <span class="token punctuation">${</span>KBUILD_CONTEXT<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">#忽略内核签名校验</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span>KNAME <span class="token punctuation">${</span>MODULE_NAME<span class="token punctuation">}</span>.ko<span class="token punctuation">)</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span>KBUILD_CMD make -C <span class="token punctuation">${</span>KERNEL_HEADERS_DIR<span class="token punctuation">}</span> modules M=<span class="token punctuation">${</span><span class="token variable">CMAKE_CURRENT_SOURCE_DIR</span><span class="token punctuation">}</span> CONFIG_MODULE_SIG=n<span class="token punctuation">)</span>
+
+<span class="token keyword">message</span><span class="token punctuation">(</span><span class="token punctuation">${</span>KBUILD_CMD<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">add_custom_command</span><span class="token punctuation">(</span>OUTPUT <span class="token punctuation">${</span>KNAME<span class="token punctuation">}</span>
+    COMMAND <span class="token punctuation">${</span>KBUILD_CMD<span class="token punctuation">}</span>
+    <span class="token property">WORKING_DIRECTORY</span> <span class="token punctuation">${</span><span class="token variable">CMAKE_CURRENT_SOURCE_DIR</span><span class="token punctuation">}</span>
+    <span class="token property">DEPENDS</span> <span class="token punctuation">${</span>SOURCE_FILE<span class="token punctuation">}</span>
+    VERBATIM
+<span class="token punctuation">)</span>
+<span class="token keyword">add_custom_target</span><span class="token punctuation">(</span><span class="token punctuation">${</span>MODULE_NAME<span class="token punctuation">}</span> ALL <span class="token property">DEPENDS</span> <span class="token punctuation">${</span>KNAME<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">add_custom_command</span><span class="token punctuation">(</span>
+    TARGET <span class="token punctuation">${</span>MODULE_NAME<span class="token punctuation">}</span>
+    POST_BUILD
+    COMMAND <span class="token punctuation">${</span><span class="token variable">CMAKE_COMMAND</span><span class="token punctuation">}</span> -E copy <span class="token punctuation">${</span><span class="token variable">CMAKE_CURRENT_SOURCE_DIR</span><span class="token punctuation">}</span>/<span class="token punctuation">${</span>KNAME<span class="token punctuation">}</span> <span class="token punctuation">${</span><span class="token variable">EXECUTABLE_OUTPUT_PATH</span><span class="token punctuation">}</span>
+    COMMAND make -C <span class="token punctuation">${</span>KERNEL_HEADERS_DIR<span class="token punctuation">}</span> M=<span class="token punctuation">${</span><span class="token variable">CMAKE_CURRENT_SOURCE_DIR</span><span class="token punctuation">}</span> clean
+<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br></div></div><p>这是作者一个内核模块下的Cmake文件，在主cmake文件中配置包含子目录:</p> <div class="language-cmake line-numbers-mode"><pre class="language-cmake"><code><span class="token keyword">add_subdirectory</span><span class="token punctuation">(</span>kernels<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>当我们使用cmake来进行编译的时候，我们会发现，在kernels这个目录下的源文件，并没有在<code>compile-command.json</code>这个文件中生成，这是为什么呢？其实是因为内核模块的编译，我们需要借助<strong>make module</strong>命令，<strong>cmake中也是对这些命令进行一些拼装而已，这些源文件并没有交给cmake来编译管理</strong>。当让clangd也就生成不了这些文件的配置项了。要解决这个问题其实也很简单，只不过不是很优雅,只需要将这些内核模块的源文件交给cmake来编译就好了</p> <div class="language-cmake line-numbers-mode"><pre class="language-cmake"><code><span class="token keyword">add_library</span><span class="token punctuation">(</span>noting <span class="token namespace">SHARED</span> <span class="token punctuation">${</span>KSOURCE_FILES<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>之所以这么说，是因为cmake中的指令add_library并不可以将这些内核模块的源文件链接到一个动态库中，所有的内核模块源文件必须使用make来编译，所以这里会有一些错误，为了防止这个指令不影响上面的cmake指令，我们直接给他放到最后，这样就可以生成对应内核模块源文件的<code>compile-command.json</code>配置项了！</p> <h3 id="clang-format"><a href="#clang-format" class="header-anchor">#</a> Clang-format</h3> <p>我们禁用了Microsoft C/C++相关的插件后，代码格式化就会成为默认的了，我们再使用这个插件来配置一下代码格式化。</p> <p>首先在项目根目录执行命令生成google style的配置文件并且重定向到<code>.clang-format</code>:</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>clang-format -style<span class="token operator">=</span>google -dump-config <span class="token operator">&gt;</span> .clang-format
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这里配置比较繁杂，这里不做过多阐述，直接贴上作者的配置文件</p> <div class="language-yml line-numbers-mode"><pre class="language-yml"><code><span class="token punctuation">---</span>
+<span class="token key atrule">BasedOnStyle</span><span class="token punctuation">:</span> Google
+<span class="token punctuation">---</span>
+<span class="token key atrule">Language</span><span class="token punctuation">:</span> Cpp
+<span class="token key atrule">AccessModifierOffset</span><span class="token punctuation">:</span> <span class="token number">-4</span>
+<span class="token key atrule">AllowAllConstructorInitializersOnNextLine</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">AllowShortCaseLabelsOnASingleLine</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">AlwaysBreakBeforeMultilineStrings</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">BraceWrapping</span><span class="token punctuation">:</span>
+  <span class="token key atrule">AfterClass</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">AfterControlStatement</span><span class="token punctuation">:</span> Always
+  <span class="token key atrule">AfterEnum</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">AfterFunction</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">AfterStruct</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">AfterUnion</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">AfterExternBlock</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">BeforeCatch</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">BeforeElse</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">BreakBeforeBraces</span><span class="token punctuation">:</span> Custom
+<span class="token key atrule">CommentPragmas</span><span class="token punctuation">:</span> <span class="token string">&quot;^ NOLINT:&quot;</span>
+<span class="token key atrule">IndentWidth</span><span class="token punctuation">:</span> <span class="token number">4</span>
+<span class="token key atrule">PointerAlignment</span><span class="token punctuation">:</span> Right
+<span class="token key atrule">SortIncludes</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">SortUsingDeclarations</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">SpacesBeforeTrailingComments</span><span class="token punctuation">:</span> <span class="token number">1</span>
+<span class="token key atrule">SpacesInContainerLiterals</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">Standard</span><span class="token punctuation">:</span> Cpp11
+<span class="token key atrule">TabWidth</span><span class="token punctuation">:</span> <span class="token number">4</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p>另外还有一个小技巧也是比较常用的，比如我们有些地方的文字不想让<code>clang-format</code>来格式化，比如一些注释啊什么的，如果我们对对齐的注释被格式化了就会很难看，这个时候我们可以用<code>// clang-format off/on</code>来禁用/开启 <code>clang-format</code>格式化功能，例如:</p> <div class="language-c line-numbers-mode"><pre class="language-c"><code><span class="token comment">// clang-format off</span>
+<span class="token comment">/*
+ * Generic Netlink uses the standard Netlink subsystem as a transport layer
+ * which means that the foundation of the Generic Netlink message is the
+ * standard Netlink message format - the only difference is the inclusion of a
+ * Generic Netlink message header. The format of the message is defined as shown
+ * below:
+  0                   1                   2                   3
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |                Netlink message header (nlmsghdr)              |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |           Generic Netlink message header (genlmsghdr)         |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-------
+ |             Optional user specific message header             |      |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+      |-&gt;nlattrs
+ |           Optional Generic Netlink message payload            |      |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-------
+*/</span>
+<span class="token comment">// clang-format on</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h3 id="指定c-c-编译器版本"><a href="#指定c-c-编译器版本" class="header-anchor">#</a> 指定C/C++编译器版本</h3> <p>众所周知vscode知识一个编辑器、他并不内置编译器，我们使用clangd插件，其实他内置了clang这个编译器，如果我们想设置vscode的风格为C语言或者C++语言，应该怎么配置？博主这里被卡了好久，查找了许多资料。</p> <p>首先在macos上，默认使用的C++的 <code>-std=c++03</code>选项，C语言是<code>C99</code>,我们目前开发C或者C++程序，都是使用很高的版本，比如我平时开发使用<code>C11</code>、<code>C++</code>也是<code>11</code>，另外C++的版本有时甚至已经用到了<code>C++20</code>。所以这里的默认配置显然不符合了。这里直接贴出来配置的位置：</p> <p><img src="/assets/img/image-20231227164354300.25f5c71b.png" alt="image-20231227164354300"></p> <p>这里的配置可以参考https://clang.llvm.org/docs/CommandGuide/clang.html#cmdoption-x.</p> <p>另外如果仅仅配置了这里，很多人都没有什么问题了，但是博主的环境很会给我找事干，我这里配置好之后，仍然不能使用<code>C++11</code>的语法，我也不卖关子了，我这里是因为还需要指定clang的cxx选项。</p> <ol><li>shit+command+p打开<code>User Setting</code></li> <li>增加配置<code>&quot;clang.cxxflags&quot;: [&quot;-std=c++11&quot;]</code></li> <li>shit+command+p <code>restart language server</code></li> <li>可以愉快的编码了</li></ol></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-3" data-v-cb1513f6><a href="/docs/env/clangd-cmake.html#clangd-cmake" class="sidebar-link reco-side-clangd-cmake" data-v-cb1513f6>Clangd-Cmake</a></li><li class="level-3" data-v-cb1513f6><a href="/docs/env/clangd-cmake.html#clangd能解决所有场景吗" class="sidebar-link reco-side-clangd能解决所有场景吗" data-v-cb1513f6>Clangd能解决所有场景吗？</a></li><li class="level-3" data-v-cb1513f6><a href="/docs/env/clangd-cmake.html#clang-format" class="sidebar-link reco-side-clang-format" data-v-cb1513f6>Clang-format</a></li><li class="level-3" data-v-cb1513f6><a href="/docs/env/clangd-cmake.html#指定c-c-编译器版本" class="sidebar-link reco-side-指定c-c-编译器版本" data-v-cb1513f6>指定C/C++编译器版本</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="https://music.163.com/song/media/outer/url?id=1846489646.mp3" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:200px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="https://p1.music.126.net/LoVqPgkI7DwSNZk50gcODg==/109951165994863998.jpg?param=130y130" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(https://p1.music.126.net/LoVqPgkI7DwSNZk50gcODg==/109951165994863998.jpg?param=130y130);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>嘉宾</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>路文飞</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div></div></div>
+    <script src="/assets/js/app.c3a3c59f.js" defer></script><script src="/assets/js/3.fffc709b.js" defer></script><script src="/assets/js/1.b1aed609.js" defer></script><script src="/assets/js/16.300f3fcd.js" defer></script>
+  </body>
+</html>
